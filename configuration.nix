@@ -113,6 +113,9 @@
     ];
   };
 
+  # Direnv - launch a nix-shell when you enter a directory
+  programs.direnv.enable = true;
+
   # 🏠 Set up home-manager
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
