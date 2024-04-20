@@ -47,16 +47,6 @@
     pkgs.tldr
     pkgs.tmux
     (pkgs.appimageTools.wrapType2 { # or wrapType1
-      name = "osu";
-      src = pkgs.fetchurl {
-        url = "https://github.com/ppy/osu/releases/latest/download/osu.AppImage";
-        hash = "sha256-1dzgs1p3/pf4eCdKvQ9JxowN+oBPBNaZv5e6qHeFPEM=";
-      };
-      extraPkgs = pkgs: with pkgs; [
-        icu
-      ];
-    })
-    (pkgs.appimageTools.wrapType2 { # or wrapType1
       name = "obsidian";
       src = pkgs.fetchurl {
         url = "https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.12/Obsidian-1.5.12.AppImage";
