@@ -60,6 +60,7 @@
     pkgs.flyctl
     pkgs.godot_4
     pkgs.krita
+    pkgs.prismlauncher
 
     # Hyprland stuff
     pkgs.dunst
