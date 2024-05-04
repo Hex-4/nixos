@@ -61,6 +61,7 @@
     pkgs.godot_4
     pkgs.krita
     pkgs.prismlauncher
+    pkgs.slack
 
     # Hyprland stuff
     pkgs.dunst
