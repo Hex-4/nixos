@@ -62,6 +62,7 @@
     pkgs.krita
     pkgs.prismlauncher
     pkgs.slack
+    pkgs.inkscape-with-extensions
 
     # Hyprland stuff
     pkgs.dunst
