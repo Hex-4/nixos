@@ -10,8 +10,8 @@
       '';
       right_format = "$all";
       character = {
-        success_symbol = "[ 󱃲](bold peach)";
-        error_symbol = "[ ⊘](italic red)";
+        success_symbol = "[󱃲](bold peach)";
+        error_symbol = "[⊘](italic red)";
       };
     } // builtins.fromTOML (builtins.readFile
       (pkgs.fetchFromGitHub
