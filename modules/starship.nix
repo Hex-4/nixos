@@ -5,7 +5,7 @@
     settings = {
       palette = "catppuccin_mocha";
       format = ''
-        in $directory $git_branch $git_status 
+        in $directory$git_branch$git_status
         $character
       '';
       right_format = "$all";
