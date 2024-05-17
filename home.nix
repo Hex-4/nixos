@@ -3,8 +3,7 @@
 {
   
   imports = [
-    ./module/starship.nix
-    
+    ./modules/starship.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -38,7 +37,6 @@
     pkgs.discordo
     pkgs.vesktop
     pkgs.floorp
-    pkgs.starship
     pkgs.fish
     pkgs.neovim
     pkgs.nodejs_22
