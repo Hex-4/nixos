@@ -35,7 +35,7 @@
     pkgs.starship
     pkgs.fish
     pkgs.neovim
-    pkgs.nodejs_21
+    pkgs.nodejs_22
     pkgs.unzipNLS
     pkgs.python3
     pkgs.libgcc
