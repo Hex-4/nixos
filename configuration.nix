@@ -132,9 +132,6 @@
     # here, NOT in environment.systemPackages:
   ];
 
-  #  Best WM
-  programs.hyprland.enable = true;
-  
   # 󰗦 Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

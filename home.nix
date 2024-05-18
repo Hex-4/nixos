@@ -4,6 +4,8 @@
   
   imports = [
     ./modules/starship.nix
+    modules/hyprland.nix
+    modules/rofi.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -72,7 +74,9 @@
     pkgs.dunst
     pkgs.waybar
     pkgs.wttrbar
-    pkgs.wofi
+    pkgs.hyprpaper
+    pkgs.rofi-wayland-unwrapped
+    pkgs.xdg-desktop-portal-hyprland
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
