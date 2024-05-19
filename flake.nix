@@ -3,14 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
+    catppuccin.url = "github:catppuccin/nix";
      home-manager = {
        url = "github:nix-community/home-manager";
        inputs.nixpkgs.follows = "nixpkgs";
      };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, catppuccin, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -21,6 +21,7 @@
           specialArgs = {inherit inputs;};
           modules = [ 
             ./configuration.nix
+            catppuccin.nixosModules.catppuccin
             inputs.home-manager.nixosModules.default
           ];
         };

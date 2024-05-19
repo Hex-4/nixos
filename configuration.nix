@@ -14,7 +14,6 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.theme = /home/hexatron/code/catppuccin/grub/src/catppuccin-mocha-grub-theme;
 
   # gpu stuff 
   boot.initrd.kernelModules = [ "amdgpu" ];
@@ -121,7 +120,7 @@
     extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
     users = {
-      "hexatron" = import ./home.nix;
+      "hexatron" = {imports = [ ./home.nix inputs.catppuccin.homeManagerModules.catppuccin];};
     };
   };
 
@@ -170,6 +169,7 @@
   hardware.opengl = {
     enable = true;
     driSupport = true;
+    driSupport32Bit = true;
     setLdLibraryPath = true;
     extraPackages = with pkgs; [
       rocm-opencl-icd
@@ -185,7 +185,10 @@
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    gamescopeSession.enable = true;
   };
+
+  programs.gamemode.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
