@@ -3,7 +3,7 @@
   programs.rofi = {
     package = pkgs.rofi-wayland-unwrapped;
     enable = true;
-    theme = ./catppuccin-mocha.rasi;
+    #theme = ./catppuccin-mocha.rasi;
     extraConfig = {
       modi = "drun,run,window";
       show-icons = true;

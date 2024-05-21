@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     catppuccin.url = "github:catppuccin/nix";
+    stylix.url = "github:danth/stylix";
      home-manager = {
        url = "github:nix-community/home-manager";
        inputs.nixpkgs.follows = "nixpkgs";
@@ -21,8 +22,7 @@
           specialArgs = {inherit inputs;};
           modules = [ 
             ./configuration.nix
-            catppuccin.nixosModules.catppuccin
-            inputs.home-manager.nixosModules.default
+            inputs.stylix.nixosModules.stylix
           ];
         };
 

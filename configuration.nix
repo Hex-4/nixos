@@ -14,7 +14,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.catppuccin.enable = true;
+
 
   # gpu stuff 
   boot.initrd.kernelModules = [ "amdgpu" ];
@@ -112,6 +112,12 @@
     #  thunderbird
     ];
   };
+
+  programs.dconf.enable = true;
+
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+  stylix.image = ./wallpaper.png;
+
 
   # Direnv - launch a nix-shell when you enter a directory
   programs.direnv.enable = true;

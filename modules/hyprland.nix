@@ -88,8 +88,8 @@
         gaps_in = 3;
         gaps_out = 10;
         border_size = 2;
-        "col.active_border" = "$peach $yellow 45deg";
-        "col.inactive_border" = "$surface1 $surface2 45deg";
+        "col.active_border" = lib.mkForce "$peach $yellow 45deg";
+        "col.inactive_border" = lib.mkForce "$surface1 $surface2 45deg";
         no_border_on_floating = false;
         resize_on_border = true;
       };
@@ -97,7 +97,6 @@
       decoration = {
         rounding = 5;
         inactive_opacity = 0.8;
-        
       };
 
       bind = [
