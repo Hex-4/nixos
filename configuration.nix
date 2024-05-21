@@ -14,6 +14,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.catppuccin.enable = true;
 
   # gpu stuff 
   boot.initrd.kernelModules = [ "amdgpu" ];
@@ -163,7 +164,6 @@
     })
     gccgo13
     openrgb-with-all-plugins
-    ocl-icd
   ];
 
   hardware.opengl = {
@@ -173,10 +173,10 @@
     setLdLibraryPath = true;
     extraPackages = with pkgs; [
       rocm-opencl-icd
-      rocm-opencl-runtime
       amdvlk
       vaapiVdpau
       libvdpau-va-gl
+      ocl-icd
     ];
   };
 
