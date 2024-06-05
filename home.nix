@@ -61,6 +61,14 @@
      };
     extraPkgs = pkgs: with pkgs; [ ];
     })
+    (pkgs.appimageTools.wrapType2 { # or wrapType1
+      name = "breaktimer";
+      src = pkgs.fetchurl {
+        url = "https://github.com/tom-james-watson/breaktimer-app/releases/latest/download/BreakTimer.AppImage";
+        hash = "sha256-bpc5EJ/5Gd908Or+A7wjhzUK3taUAcbxE69fmUGYFXs=";
+      };
+      extraPkgs = pkgs: with pkgs; [ ];
+    })
     pkgs.aseprite
     pkgs.gh
     pkgs.safeeyes

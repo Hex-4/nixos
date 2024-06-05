@@ -16,8 +16,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
 
-  # gpu stuff 
-  boot.initrd.kernelModules = [ "amdgpu" ];
 
   #  Enable Flakes: Lock your sytem to a nixpkgs commit, and be able to add multiple sources
   nix.settings.experimental-features = [ "nix-command" "flakes"];
@@ -102,7 +100,7 @@
     isNormalUser = true;
     description = "Hex Four";
     shell = pkgs.fish;
-    extraGroups = [ "networkmanager" "wheel" "hexatron" "dialout"];
+    extraGroups = [ "networkmanager" "wheel" "hexatron" "dialout" "gamemode"];
     packages = with pkgs; [
       firefox
       kate
@@ -195,6 +193,12 @@
   };
 
   programs.gamemode.enable = true;
+
+  programs.gamemode.settings = {
+    general = {
+      renice = 10;
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
