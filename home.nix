@@ -22,6 +22,8 @@
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
 
+  stylix.targets.firefox.enable = true;
+
   # 󰏖 The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
@@ -79,6 +81,9 @@
     pkgs.slack
     pkgs.inkscape-with-extensions
     pkgs.alsa-oss
+    pkgs.vscodium-fhs
+    (pkgs.steam.override { extraPkgs = pkgs: with pkgs; [pkgs.webkitgtk]; }).run
+    pkgs.rustup
 
     # Hyprland stuff
     pkgs.dunst
