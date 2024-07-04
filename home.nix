@@ -73,7 +73,6 @@
     })
     pkgs.aseprite
     pkgs.gh
-    pkgs.safeeyes
     pkgs.flyctl
     pkgs.godot_4
     pkgs.krita
@@ -84,6 +83,8 @@
     pkgs.vscodium-fhs
     (pkgs.steam.override { extraPkgs = pkgs: with pkgs; [pkgs.webkitgtk]; }).run
     pkgs.rustup
+    pkgs.appimage-run
+    pkgs.dijo
 
     # Hyprland stuff
     pkgs.dunst
