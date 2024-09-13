@@ -4,6 +4,9 @@
 
 { config, pkgs, inputs, ... }:
 
+let
+  myfonts = import ./myfonts.nix { inherit pkgs; };
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -73,7 +76,6 @@
   services.printing.enable = true;
 
   # 󰋋 Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -94,6 +96,8 @@
 
   # 󰈺 Add fish 
   programs.fish.enable=true;
+
+  programs.hyprland.enable = true;
 
   # 󱃲 Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.hexatron = {
@@ -139,8 +143,10 @@
   # 󰗦 Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+  
+  fonts.fonts = [
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+    myfonts.fonts
   ];
 
   fonts.fontDir.enable = true;

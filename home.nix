@@ -71,6 +71,23 @@
       };
       extraPkgs = pkgs: with pkgs; [ ];
     })
+    (pkgs.appimageTools.wrapType2 { # or wrapType1
+      name = "kando";
+      src = pkgs.fetchurl {
+        url = "https://github.com/kando-menu/kando/releases/download/v1.2.0/Kando-1.2.0-x86_64.AppImage";
+        hash = "sha256-kaxl9ffnOcjfONmI+lNt+NUkaD2N4wMfo/s72T7yL/M=";
+      };
+      extraPkgs = pkgs: with pkgs; [ ];
+    })
+    (pkgs.appimageTools.wrapType2 { # or wrapType1
+      name = "brave";
+      src = pkgs.fetchurl {
+        url = "https://github.com/srevinsaju/Brave-AppImage/releases/download/v1.68.124/Brave-stable-v1.68.124-x86_64.AppImage";
+        hash = "sha256-IcJ+EUfBiYdKDvk9o2JmlVeYJlkF57kKrFT/1fdUb9M=";
+      };
+      extraPkgs = pkgs: with pkgs; [ ];
+    })
+    
     pkgs.aseprite
     pkgs.gh
     pkgs.flyctl
@@ -80,11 +97,17 @@
     pkgs.slack
     pkgs.inkscape-with-extensions
     pkgs.alsa-oss
-    pkgs.vscodium-fhs
     (pkgs.steam.override { extraPkgs = pkgs: with pkgs; [pkgs.webkitgtk]; }).run
     pkgs.rustup
     pkgs.appimage-run
     pkgs.dijo
+    pkgs.zed-editor
+    pkgs.syncthingtray
+    pkgs.syncthing
+    pkgs.deno
+    pkgs.tetrio-desktop
+    pkgs.ffmpeg
+    
 
     # Hyprland stuff
     pkgs.dunst
@@ -94,6 +117,11 @@
     pkgs.rofi-wayland-unwrapped
     pkgs.xdg-desktop-portal-hyprland
   ];
+
+programs.vscode = {
+  enable = true;
+  package = pkgs.vscodium.fhsWithPackages (ps: with ps; [ rustup zlib ]);
+};
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
