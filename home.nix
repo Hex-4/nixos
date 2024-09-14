@@ -93,7 +93,6 @@
     pkgs.flyctl
     pkgs.godot_4
     pkgs.krita
-    pkgs.prismlauncher
     pkgs.slack
     pkgs.inkscape-with-extensions
     pkgs.alsa-oss
