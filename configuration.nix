@@ -119,7 +119,7 @@ in
 
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
   stylix.image = ./wallpaper.png;
-
+  stylix.enable = true;
 
   # Direnv - launch a nix-shell when you enter a directory
   programs.direnv.enable = true;
@@ -128,6 +128,7 @@ in
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
+    backupFileExtension = "hm-bak";
     users = {
       "hexatron" = {imports = [ ./home.nix inputs.catppuccin.homeManagerModules.catppuccin];};
     };
@@ -147,6 +148,7 @@ in
   fonts.fonts = [
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
     myfonts.fonts
+    pkgs.ibm-plex
   ];
 
   fonts.fontDir.enable = true;

@@ -22,7 +22,35 @@
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
 
-  stylix.targets.firefox.enable = true;
+  stylix.fonts = {
+    serif = {
+      package = pkgs.dejavu_fonts;
+      name = "DejaVu Serif";
+    };
+
+    sansSerif = {
+      package = pkgs.ibm-plex;
+      name = "IBM Plex Sans";
+    };
+
+    monospace = {
+      package = (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; });
+      name = "JetBrainsMono Nerd Font";
+    };
+
+    emoji = {
+      package = pkgs.noto-fonts-emoji;
+      name = "Noto Color Emoji";
+    };
+  };
+
+  stylix.cursor = {
+    package = pkgs.catppuccin-cursors;
+    name = "mochaDark";
+  };
+
+  stylix.targets.firefox.enable = false;
+  stylix.targets.rofi.enable = false;
 
   # 󰏖 The home.packages option allows you to install Nix packages into your
   # environment.
@@ -106,6 +134,8 @@
     pkgs.deno
     pkgs.tetrio-desktop
     pkgs.ffmpeg
+    pkgs.kicad
+    pkgs.ibm-plex
     
 
     # Hyprland stuff
