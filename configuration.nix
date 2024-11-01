@@ -63,13 +63,13 @@ in
   services.xserver.videoDrivers = ["amdgpu"];
 
   # 󰇀 Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   #  Enable CUPS to print documents.
@@ -118,7 +118,7 @@ in
   programs.dconf.enable = true;
 
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-  stylix.image = ./wallpaper.png;
+  stylix.image = ./configuration.nix;
   stylix.enable = true;
 
   # Direnv - launch a nix-shell when you enter a directory
@@ -145,7 +145,7 @@ in
   nixpkgs.config.allowUnfree = true;
 
   
-  fonts.fonts = [
+  fonts.packages = [
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
     myfonts.fonts
     pkgs.ibm-plex
@@ -166,6 +166,7 @@ in
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
+    
     (pkgs.appimageTools.wrapType2 {
       name = "plover";
       src = pkgs.fetchurl {
@@ -177,19 +178,19 @@ in
     gccgo13
     openrgb-with-all-plugins
     nh
+    nixd
   ];
 
-  hardware.opengl = {
+  # For nixd
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+
+  hardware.graphics = {
     enable = true;
 
-    driSupport32Bit = true;
+    enable32Bit = true;
     
     extraPackages = with pkgs; [
-      rocm-opencl-icd
-      amdvlk
-      vaapiVdpau
-      libvdpau-va-gl
-      ocl-icd
+      rocmPackages.clr.icd
     ];
   };
 

@@ -51,6 +51,9 @@
 
   stylix.targets.firefox.enable = false;
   stylix.targets.rofi.enable = false;
+  stylix.targets.kde.enable = false;
+  stylix.targets.vscode.enable = false;
+  
 
   # 󰏖 The home.packages option allows you to install Nix packages into your
   # environment.
@@ -100,14 +103,6 @@
       extraPkgs = pkgs: with pkgs; [ ];
     })
     (pkgs.appimageTools.wrapType2 { # or wrapType1
-      name = "kando";
-      src = pkgs.fetchurl {
-        url = "https://github.com/kando-menu/kando/releases/download/v1.2.0/Kando-1.2.0-x86_64.AppImage";
-        hash = "sha256-kaxl9ffnOcjfONmI+lNt+NUkaD2N4wMfo/s72T7yL/M=";
-      };
-      extraPkgs = pkgs: with pkgs; [ ];
-    })
-    (pkgs.appimageTools.wrapType2 { # or wrapType1
       name = "brave";
       src = pkgs.fetchurl {
         url = "https://github.com/srevinsaju/Brave-AppImage/releases/download/v1.68.124/Brave-stable-v1.68.124-x86_64.AppImage";
@@ -136,6 +131,9 @@
     pkgs.ffmpeg
     pkgs.kicad
     pkgs.ibm-plex
+    pkgs.plover.dev
+    pkgs.kando
+    pkgs.alejandra
     
 
     # Hyprland stuff
