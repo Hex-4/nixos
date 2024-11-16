@@ -119,7 +119,7 @@ in
 
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
   stylix.image = ./configuration.nix;
-  stylix.enable = true;
+  stylix.enable = false;
 
   # Direnv - launch a nix-shell when you enter a directory
   programs.direnv.enable = true;

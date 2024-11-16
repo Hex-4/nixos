@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   
@@ -52,7 +52,7 @@
   stylix.targets.firefox.enable = false;
   stylix.targets.rofi.enable = false;
   stylix.targets.kde.enable = false;
-  stylix.targets.vscode.enable = false;
+  stylix.targets.vscode.enable = lib.mkForce false;
   
 
   # 󰏖 The home.packages option allows you to install Nix packages into your
@@ -95,14 +95,6 @@
     extraPkgs = pkgs: with pkgs; [ ];
     })
     (pkgs.appimageTools.wrapType2 { # or wrapType1
-      name = "breaktimer";
-      src = pkgs.fetchurl {
-        url = "https://github.com/tom-james-watson/breaktimer-app/releases/latest/download/BreakTimer.AppImage";
-        hash = "sha256-bpc5EJ/5Gd908Or+A7wjhzUK3taUAcbxE69fmUGYFXs=";
-      };
-      extraPkgs = pkgs: with pkgs; [ ];
-    })
-    (pkgs.appimageTools.wrapType2 { # or wrapType1
       name = "brave";
       src = pkgs.fetchurl {
         url = "https://github.com/srevinsaju/Brave-AppImage/releases/download/v1.68.124/Brave-stable-v1.68.124-x86_64.AppImage";
@@ -134,6 +126,7 @@
     pkgs.plover.dev
     pkgs.kando
     pkgs.alejandra
+    pkgs.davinci-resolve
     
 
     # Hyprland stuff
