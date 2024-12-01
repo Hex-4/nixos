@@ -127,6 +127,9 @@
     pkgs.kando
     pkgs.alejandra
     pkgs.davinci-resolve
+    pkgs.baobab
+    pkgs.vlc
+    pkgs.pika-backup
     
 
     # Hyprland stuff
