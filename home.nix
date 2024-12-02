@@ -135,7 +135,6 @@
 
     # Hyprland stuff
     pkgs.dunst
-    pkgs.waybar
     pkgs.wttrbar
     pkgs.hyprpaper
     pkgs.rofi-wayland-unwrapped
