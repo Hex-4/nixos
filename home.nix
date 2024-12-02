@@ -6,6 +6,7 @@
     ./modules/starship.nix
     modules/hyprland.nix
     modules/rofi.nix
+    modules/waybar/waybar.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

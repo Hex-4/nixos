@@ -85,7 +85,7 @@
       general = {
         "$mainMod" = "SUPER";
         layout = "dwindle";
-        gaps_in = 3;
+        gaps_in = 5;
         gaps_out = 10;
         border_size = 2;
         "col.active_border" = lib.mkForce "$peach $yellow 45deg";
@@ -101,17 +101,28 @@
 
       bind = [
 
-        "$mainMod, Return, exec, kitty"
-        "$mainMod, Q, killactive,"
+        "$mainMod, Return, exec, pkill rofi || rofi -show drun"
+        "$mainMod, X, killactive,"
         "$mainMod, F, fullscreen, 0"
         "$mainMod SHIFT, F, fullscreen, 1"
         "ALT, Space, togglefloating,"
-        "$mainMod, D, exec, pkill rofi || rofi --show drun"
+        "$mainMod, Q, exec, kitty"
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
+        "$mainMod, mouse_down, workspace, e+1"
+        "$mainMod, mouse_up, workspace, e-1"
+
+      ];
+
+      bindm = [
         "$mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:272, resizewindow"
+      ];
+
+      exec-once = [
+        "waybar"
       ];
 
     };
