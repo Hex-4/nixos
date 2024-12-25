@@ -40,6 +40,8 @@ in
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
+  services.joycond.enable = true;
+
   # 󰔠 Set your time zone.
   time.timeZone = "America/Edmonton";
 

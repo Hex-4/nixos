@@ -131,6 +131,8 @@
     pkgs.baobab
     pkgs.vlc
     pkgs.pika-backup
+    pkgs.uv
+    pkgs.figma-linux
     
 
     # Hyprland stuff
