@@ -8,20 +8,20 @@
       mainBar = {
         layer = "top";
         position = "top";
-        modules-left =  ["hyprland/workspaces"];
-        modules-center = ["load"];
-        modules-right = ["pulseaudio" "clock" "tray"];
+        modules-left =  ["custom/shutdown" "hyprland/workspaces"];
+        modules-center = ["clock"];
+        modules-right = ["pulseaudio" "cpu" "tray"];
 
         "hyprland/workspaces" = {
-          disable-scroll = true;
+          disable-scroll = false;
           sort-by-name = true;
           format = " {icon} ";
           format-icons = {
               default = "󰋙";
               active = "󰋘";
           };
-          persisent-workspaces = {
-            "*" = 5;
+          persistent-workspaces = {
+            "*" = 6;
           };
         };
         tray =  {
@@ -31,8 +31,8 @@
         "clock" = {
           "timezone" = "America/Edmonton";
           "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          "format-alt" = " {:%d/%m/%Y}";
-          "format" = " {:%H:%M}";
+          "format-alt" = " {:%d/%m/%Y}";
+          "format" = " {:%H:%M}";
         };
         pulseaudio = {
 
@@ -43,10 +43,16 @@
           };
           on-click = "pavucontrol";
         };
-        load = {
+        cpu = {
           interval = 10;
-          format = "  {load1}";
+          format = "  {}%";
           max-length = 10;
+        };
+
+        "custom/shutdown" = {
+          format = " ";
+          tooltip = false;
+          on-click = "shutdown now";
         };
       };
     };

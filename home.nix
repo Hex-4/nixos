@@ -1,7 +1,9 @@
-{ config, pkgs, lib, ... }:
-
 {
-  
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./modules/starship.nix
     modules/hyprland.nix
@@ -22,7 +24,6 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-
   stylix.fonts = {
     serif = {
       package = pkgs.dejavu_fonts;
@@ -35,7 +36,7 @@
     };
 
     monospace = {
-      package = (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; });
+      package = pkgs.nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];};
       name = "JetBrainsMono Nerd Font";
     };
 
@@ -54,7 +55,6 @@
   stylix.targets.rofi.enable = false;
   stylix.targets.kde.enable = false;
   stylix.targets.vscode.enable = lib.mkForce false;
-  
 
   # 󰏖 The home.packages option allows you to install Nix packages into your
   # environment.
@@ -62,7 +62,6 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     pkgs.hello
-
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -87,23 +86,25 @@
     pkgs.eza
     pkgs.tldr
     pkgs.tmux
-    (pkgs.appimageTools.wrapType2 { # or wrapType1
+    (pkgs.appimageTools.wrapType2 {
+      # or wrapType1
       name = "obsidian";
       src = pkgs.fetchurl {
         url = "https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.12/Obsidian-1.5.12.AppImage";
         hash = "sha256-qmXZmSp7YPZ2k2+8gNYW9Fz5s0aMSrYHMBI7cn9M8u4=";
-     };
-    extraPkgs = pkgs: with pkgs; [ ];
+      };
+      extraPkgs = pkgs: with pkgs; [];
     })
-    (pkgs.appimageTools.wrapType2 { # or wrapType1
+    (pkgs.appimageTools.wrapType2 {
+      # or wrapType1
       name = "brave";
       src = pkgs.fetchurl {
         url = "https://github.com/srevinsaju/Brave-AppImage/releases/download/v1.68.124/Brave-stable-v1.68.124-x86_64.AppImage";
         hash = "sha256-IcJ+EUfBiYdKDvk9o2JmlVeYJlkF57kKrFT/1fdUb9M=";
       };
-      extraPkgs = pkgs: with pkgs; [ ];
+      extraPkgs = pkgs: with pkgs; [];
     })
-    
+
     pkgs.aseprite
     pkgs.gh
     pkgs.flyctl
@@ -112,7 +113,7 @@
     pkgs.slack
     pkgs.inkscape-with-extensions
     pkgs.alsa-oss
-    (pkgs.steam.override { extraPkgs = pkgs: with pkgs; [pkgs.webkitgtk]; }).run
+    (pkgs.steam.override {extraPkgs = pkgs: with pkgs; [pkgs.webkitgtk];}).run
     pkgs.rustup
     pkgs.appimage-run
     pkgs.dijo
@@ -132,8 +133,6 @@
     pkgs.vlc
     pkgs.pika-backup
     pkgs.uv
-    pkgs.figma-linux
-    
 
     # Hyprland stuff
     pkgs.dunst
@@ -141,12 +140,15 @@
     pkgs.hyprpaper
     pkgs.rofi-wayland-unwrapped
     pkgs.xdg-desktop-portal-hyprland
+    pkgs.wl-clipboard-rs
+    pkgs.grim
+    pkgs.slurp
   ];
 
-programs.vscode = {
-  enable = true;
-  package = pkgs.vscodium.fhsWithPackages (ps: with ps; [ rustup zlib ]);
-};
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscodium.fhsWithPackages (ps: with ps; [rustup zlib]);
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -163,7 +165,6 @@ programs.vscode = {
     # '';
   };
 
-  
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. If you don't want to manage your shell through Home
   # Manager then you have to manually source 'hm-session-vars.sh' located at

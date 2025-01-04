@@ -10,8 +10,8 @@
       terminal = "kitty";
       drun-display-format = "{icon} {name}";
       disable-history = false;
-      display-drun = " 󱃲  Programs";
-      display-run = "   Launch";
+      display-drun = " 󱃲  Apps";
+      display-run = "   Run";
       display-window = "   Windows";
       display-Network = " 󰖩  Network";
       sidebar-mode = true;

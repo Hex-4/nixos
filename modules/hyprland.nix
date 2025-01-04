@@ -117,12 +117,14 @@
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
         "$mainMod, 3, workspace, 3"
+        "$mainMod, 4, workspace, 4"
+        "$mainMod, 5, workspace, 5"
 
       ];
 
       bindm = [
         "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:272, resizewindow"
+        "$mainMod, mouse:273, resizewindow"
       ];
 
       exec-once = [
