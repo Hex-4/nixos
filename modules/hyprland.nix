@@ -107,12 +107,14 @@
       };
 
       bind = [
-        "$mainMod, Return, exec, pkill rofi || rofi -show drun"
+        "$mainMod, Space, exec, pkill rofi || rofi -show drun"
         "$mainMod, X, killactive,"
         "$mainMod, F, fullscreen, 0"
         "$mainMod SHIFT, F, fullscreen, 1"
         "ALT, Space, togglefloating,"
-        "$mainMod, Q, exec, kitty"
+        "$mainMod, K, exec, kitty"
+        "$mainMod, W, exec, flatpak run io.github.zen_browser.zen"
+        "$mainMod, D, exec, dolphin"
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
@@ -125,6 +127,14 @@
         "$mainMod, 3, workspace, 3"
         "$mainMod, 4, workspace, 4"
         "$mainMod, 5, workspace, 5"
+        "$mainMod, 6, workspace, 6"
+        # Move windows
+        "$mainMod + CTRL, 1, movetoworkspace, 1"
+        "$mainMod + CTRL, 2, movetoworkspace, 2"
+        "$mainMod + CTRL, 3, movetoworkspace, 3"
+        "$mainMod + CTRL, 4, movetoworkspace, 4"
+        "$mainMod + CTRL, 5, movetoworkspace, 5"
+        "$mainMod + CTRL, 6, movetoworkspace, 6"
         # Screenshot
         ", Print, exec, grim -g \"$(slurp)\" - | wl-copy -t image/png"
       ];
@@ -142,6 +152,9 @@
       exec-once = [
         "waybar"
         "hyprpaper"
+        "[workspace 1 silent] flatpak run io.github.zen_browser.zen"
+        "[workspace 6 silent] slack"
+        "[workspace 6 silent] vesktop"
       ];
     };
   };
