@@ -1,5 +1,9 @@
-{lib, config, pkgs, ...}:
 {
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -81,26 +85,28 @@
       "$crust" = "rgb(11111b)";
       "$crustAlpha" = "11111b";
 
-
       general = {
         "$mainMod" = "SUPER";
         layout = "dwindle";
-        gaps_in = 5;
-        gaps_out = 10;
-        border_size = 2;
-        "col.active_border" = lib.mkForce "$peach $yellow 45deg";
-        "col.inactive_border" = lib.mkForce "$surface1 $surface2 45deg";
+        gaps_in = 10;
+        gaps_out = 16;
+        border_size = 3;
+        "col.active_border" = lib.mkForce "$red $peach $yellow 45deg";
+        "col.inactive_border" = lib.mkForce "$surface1 $overlay1 45deg";
         no_border_on_floating = false;
         resize_on_border = true;
       };
 
+      dwindle = {
+        smart_split = true;
+      };
+
       decoration = {
-        rounding = 5;
-        inactive_opacity = 0.8;
+        rounding = 10;
+        inactive_opacity = 0.6;
       };
 
       bind = [
-
         "$mainMod, Return, exec, pkill rofi || rofi -show drun"
         "$mainMod, X, killactive,"
         "$mainMod, F, fullscreen, 0"
@@ -119,7 +125,8 @@
         "$mainMod, 3, workspace, 3"
         "$mainMod, 4, workspace, 4"
         "$mainMod, 5, workspace, 5"
-
+        # Screenshot
+        ", Print, exec, grim -g \"$(slurp)\" - | wl-copy -t image/png"
       ];
 
       bindm = [
@@ -127,10 +134,15 @@
         "$mainMod, mouse:273, resizewindow"
       ];
 
-      exec-once = [
-        "waybar"
+      env = [
+        "QT_QPA_PLATFORM,wayland;xcb"
+        "QT_QPA_PLATFORMTHEME,qt6ct"
       ];
 
+      exec-once = [
+        "waybar"
+        "hyprpaper"
+      ];
     };
   };
 }

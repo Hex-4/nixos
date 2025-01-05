@@ -9,6 +9,7 @@
     modules/hyprland.nix
     modules/rofi.nix
     modules/waybar/waybar.nix
+    modules/dunst.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -133,9 +134,9 @@
     pkgs.vlc
     pkgs.pika-backup
     pkgs.uv
+    pkgs.kdePackages.dolphin
 
     # Hyprland stuff
-    pkgs.dunst
     pkgs.wttrbar
     pkgs.hyprpaper
     pkgs.rofi-wayland-unwrapped
@@ -143,7 +144,23 @@
     pkgs.wl-clipboard-rs
     pkgs.grim
     pkgs.slurp
+    pkgs.nwg-look
+    pkgs.kdePackages.qt6ct
+    pkgs.libsForQt5.qt5ct
   ];
+
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      ipc = "on";
+      splash = false;
+      splash_offset = 2.0;
+
+      preload = "/home/hexatron/Pictures/firewatch.jpg";
+
+      wallpaper = "DP-1, /home/hexatron/Pictures/firewatch.jpg";
+    };
+  };
 
   programs.vscode = {
     enable = true;
