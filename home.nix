@@ -89,19 +89,11 @@
     pkgs.tmux
     (pkgs.appimageTools.wrapType2 {
       # or wrapType1
-      name = "obsidian";
+      pname = "obsidian";
+      version = "0";
       src = pkgs.fetchurl {
         url = "https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.12/Obsidian-1.5.12.AppImage";
         hash = "sha256-qmXZmSp7YPZ2k2+8gNYW9Fz5s0aMSrYHMBI7cn9M8u4=";
-      };
-      extraPkgs = pkgs: with pkgs; [];
-    })
-    (pkgs.appimageTools.wrapType2 {
-      # or wrapType1
-      name = "brave";
-      src = pkgs.fetchurl {
-        url = "https://github.com/srevinsaju/Brave-AppImage/releases/download/v1.68.124/Brave-stable-v1.68.124-x86_64.AppImage";
-        hash = "sha256-IcJ+EUfBiYdKDvk9o2JmlVeYJlkF57kKrFT/1fdUb9M=";
       };
       extraPkgs = pkgs: with pkgs; [];
     })
@@ -135,6 +127,10 @@
     pkgs.pika-backup
     pkgs.uv
     pkgs.kdePackages.dolphin
+    pkgs.bun
+    pkgs.ungoogled-chromium
+    pkgs.ardour
+    pkgs.zrythm
 
     # Hyprland stuff
     pkgs.wttrbar

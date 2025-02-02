@@ -1,27 +1,26 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, inputs, ... }:
-
-let
-  myfonts = import ./myfonts.nix { inherit pkgs; };
-in
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
-    ];
+  config,
+  pkgs,
+  inputs,
+  ...
+}: let
+  myfonts = import ./myfonts.nix {inherit pkgs;};
+in {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-
-
   #  Enable Flakes: Lock your sytem to a nixpkgs commit, and be able to add multiple sources
-  nix.settings.experimental-features = [ "nix-command" "flakes"];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -29,7 +28,7 @@ in
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-  
+
   #   Flathub
   services.flatpak.enable = true;
 
@@ -96,8 +95,8 @@ in
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # 󰈺 Add fish 
-  programs.fish.enable=true;
+  # 󰈺 Add fish
+  programs.fish.enable = true;
 
   programs.hyprland.enable = true;
 
@@ -106,14 +105,14 @@ in
     isNormalUser = true;
     description = "Hex Four";
     shell = pkgs.fish;
-    extraGroups = [ "networkmanager" "wheel" "hexatron" "dialout" "gamemode"];
+    extraGroups = ["networkmanager" "wheel" "hexatron" "dialout" "gamemode"];
     packages = with pkgs; [
       firefox
       kate
       gum
       kitty
       lmms
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -128,11 +127,11 @@ in
 
   # 🏠 Set up home-manager
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {inherit inputs;};
     useGlobalPkgs = true;
     backupFileExtension = "hm-bak";
     users = {
-      "hexatron" = {imports = [ ./home.nix inputs.catppuccin.homeManagerModules.catppuccin];};
+      "hexatron" = {imports = [./home.nix inputs.catppuccin.homeManagerModules.catppuccin];};
     };
   };
 
@@ -146,9 +145,8 @@ in
   # 󰗦 Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  
   fonts.packages = [
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+    pkgs.nerd-fonts.jetbrains-mono
     myfonts.fonts
     pkgs.ibm-plex
   ];
@@ -168,14 +166,15 @@ in
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
-    
+
     (pkgs.appimageTools.wrapType2 {
-      name = "plover";
+      pname = "plover";
+      version = "0";
       src = pkgs.fetchurl {
         url = "https://github.com/openstenoproject/plover/releases/download/continuous/plover-4.0.0rc2+6.g53c416f-x86_64.AppImage";
         hash = "sha256-aoqytTczT3FWr2yOuC0Ai7nCD22Y23OGLNFfgI/fg7s=";
       };
-      extraPkgs = pkgs: with pkgs; [ ];
+      extraPkgs = pkgs: with pkgs; [];
     })
     gccgo13
     openrgb-with-all-plugins
@@ -184,19 +183,19 @@ in
   ];
 
   # For nixd
-  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
   hardware.graphics = {
     enable = true;
 
     enable32Bit = true;
-    
+
     extraPackages = with pkgs; [
       rocmPackages.clr.icd
     ];
   };
 
-# Steam
+  # Steam
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -216,14 +215,14 @@ in
   # started in user sessions.
   programs.mtr.enable = true;
   programs.gnupg.agent = {
-     enable = true;
-     enableSSHSupport = true;
-   };
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # List services that you want to enable:
 
   # 󰣀
-   services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # OpenRGB (with plugins? maybe? idk man)
   services.hardware.openrgb.enable = true;
@@ -241,5 +240,4 @@ in
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
