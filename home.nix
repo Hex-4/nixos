@@ -158,6 +158,15 @@
     };
   };
 
+  services.syncthing = {
+    enable = true;
+    tray = true;
+    
+    # lazy lazy lazy
+    overrideDevices = false;
+    overrideFolders = false;
+  };
+
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium.fhsWithPackages (ps: with ps; [rustup zlib]);
