@@ -131,6 +131,7 @@
     pkgs.ungoogled-chromium
     pkgs.ardour
     pkgs.zrythm
+    pkgs.zed-editor
 
     # Hyprland stuff
     pkgs.wttrbar
