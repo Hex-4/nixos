@@ -132,6 +132,8 @@
     pkgs.ardour
     pkgs.zrythm
     pkgs.zed-editor
+    pkgs.croc
+    pkgs.kdenlive
 
     # Hyprland stuff
     pkgs.wttrbar
