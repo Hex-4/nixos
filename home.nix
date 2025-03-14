@@ -134,6 +134,11 @@
     pkgs.zed-editor
     pkgs.croc
     pkgs.kdenlive
+    pkgs.minecraftia
+    pkgs.lunarvim
+    pkgs.rustup
+    pkgs.lazygit
+    pkgs.ripgrep
 
     # Hyprland stuff
     pkgs.wttrbar
