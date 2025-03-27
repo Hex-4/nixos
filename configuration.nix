@@ -108,7 +108,7 @@ in {
     extraGroups = ["networkmanager" "wheel" "hexatron" "dialout" "gamemode"];
     packages = with pkgs; [
       firefox
-      kate
+      kdePackages.kate
       gum
       kitty
       lmms
@@ -167,15 +167,6 @@ in {
     wget
     git
 
-    (pkgs.appimageTools.wrapType2 {
-      pname = "plover";
-      version = "0";
-      src = pkgs.fetchurl {
-        url = "https://github.com/openstenoproject/plover/releases/download/continuous/plover-4.0.0rc2+6.g53c416f-x86_64.AppImage";
-        hash = "sha256-aoqytTczT3FWr2yOuC0Ai7nCD22Y23OGLNFfgI/fg7s=";
-      };
-      extraPkgs = pkgs: with pkgs; [];
-    })
     gccgo13
     openrgb-with-all-plugins
     nh

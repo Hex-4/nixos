@@ -118,7 +118,6 @@
     pkgs.ffmpeg
     pkgs.kicad
     pkgs.ibm-plex
-    pkgs.plover.dev
     pkgs.kando
     pkgs.alejandra
     pkgs.davinci-resolve
@@ -133,12 +132,14 @@
     pkgs.zrythm
     pkgs.zed-editor
     pkgs.croc
-    pkgs.kdenlive
+    pkgs.kdePackages.kdenlive
     pkgs.minecraftia
     pkgs.lunarvim
     pkgs.rustup
     pkgs.lazygit
     pkgs.ripgrep
+    pkgs.plover.dev
+    pkgs.figma-linux
 
     # Hyprland stuff
     pkgs.wttrbar
@@ -169,7 +170,7 @@
   services.syncthing = {
     enable = true;
     tray = true;
-    
+
     # lazy lazy lazy
     overrideDevices = false;
     overrideFolders = false;
